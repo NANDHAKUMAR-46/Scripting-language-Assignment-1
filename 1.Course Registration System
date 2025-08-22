@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Registration System</title>
+    <script>
+        let courses = [
+            {id: 1, name: "AI Basics", seats: 2, prereq: ""},
+            {id: 2, name: "ML Advanced", seats: 1, prereq: "AI Basics"},
+            {id: 3, name: "Data Science", seats: 3, prereq: ""}
+        ];
+
+        function registerCourse() {
+            let courseId = parseInt(document.getElementById("courseSelect").value);
+            let course = courses.find(c => c.id === courseId);
+            if(course.seats > 0) {
+                course.seats--;
+                alert(`Registered for ${course.name}. Seats left: ${course.seats}`);
+                displayCourses();
+            } else {
+                alert("Course full!");
+            }
+        }
+
+        function displayCourses() {
+            let list = document.getElementById("courseList");
+            list.innerHTML = "";
+            courses.forEach(c => {
+                list.innerHTML += `<li>${c.name} - Seats: ${c.seats} - Prereq: ${c.prereq || "None"}</li>`;
+            });
+        }
+
+        window.onload = displayCourses;
+    </script>
+</head>
+<body>
+    <h2>Course Registration System</h2>
+    <ul id="courseList"></ul>
+    <select id="courseSelect">
+        <option value="1">AI Basics</option>
+        <option value="2">ML Advanced</option>
+        <option value="3">Data Science</option>
+    </select>
+    <button onclick="registerCourse()">Register</button>
+</body>
+</html>
