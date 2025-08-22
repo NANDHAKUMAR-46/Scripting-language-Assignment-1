@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Simple Image Animation</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+  #myImage {
+    width: 200px;
+    opacity: 0.5;
+    transition: all 0.5s;
+  }
+</style>
+</head>
+<body>
+<h2>Portfolio Image</h2>
+<img id="myImage" src="https://via.placeholder.com/200" alt="Design">
+<br><br>
+<button id="animateBtn">Animate Image</button>
+
+<script>
+  $("#animateBtn").click(function(){
+    $("#myImage").animate({ opacity: 1, width: "300px" }, 800);
+  });
+</script>
+</body>
+</html>
